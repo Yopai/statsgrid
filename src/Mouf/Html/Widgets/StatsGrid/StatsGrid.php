@@ -168,7 +168,11 @@ class StatsGrid implements HtmlElementInterface {
 	 *
 	 */
 	public function toHtml() {
-		
+		[$table, $maxX, $maxY] = $this->buildTable();
+		$this->printTable($table, $maxX, $maxY);
+	}
+
+	public function buildTable() {
 		$dataset = $this->data;
 		
 		$statsRows = new StatsColumn();
@@ -404,7 +408,7 @@ class StatsGrid implements HtmlElementInterface {
 			}
 		} 
 		
-		$this->printTable($table, $maxX, $maxY);
+		return [$table, $maxX, $maxY];
 	}
 
 	
